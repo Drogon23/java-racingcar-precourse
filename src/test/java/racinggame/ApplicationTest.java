@@ -17,6 +17,18 @@ public class ApplicationTest extends NSTest {
     }
 
     @Test
+    void 시도할_횟수_입력_실패() {
+        runNoLineFound("pobi, woni", "a");
+        verify(ErrorType.WRONG_RACING_COUNT);
+    }
+
+    @Test
+    void 시도할_횟수_0으로_입력() {
+        runNoLineFound("pobi, woni", "0");
+        verify(ErrorType.WRONG_RACING_COUNT);
+    }
+
+    @Test
     void 전진_정지() {
         assertRandomTest(() -> {
             run("pobi,woni", "1");
