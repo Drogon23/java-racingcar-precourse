@@ -11,33 +11,34 @@ public class Application {
 		System.out.println(GAME_START_MESSAGE);
 		RacingCars racingCars = RacingCars.createRacingCars();
 		System.out.println(RACING_COUNT_MESSAGE);
-		int count = getCount();
-		System.out.println(count);
+		int racingCount = getRacingCount();
+		System.out.println(racingCount);
 	}
 
-	private static int getCount() {
-		int count = 0;
-		while (count < 1) {
-			count = tryReadCount(count);
+	private static int getRacingCount() {
+		int racingCount = 0;
+		while (racingCount < 1) {
+			racingCount = tryReadRacingCount();
 		}
-		return count;
+		return racingCount;
 	}
 
-	private static int tryReadCount(int count) {
+	private static int tryReadRacingCount() {
+		int racingCount = 0;
 		try {
-			count = readCount();
+			racingCount = readRacingCount();
 		} catch (IllegalArgumentException exception) {
 			System.out.println(ErrorType.WRONG_RACING_COUNT);
 		}
-		return count;
+		return racingCount;
 	}
 
-	private static int readCount() {
+	private static int readRacingCount() {
 		String inputLine = Console.readLine();
-		int count = Integer.parseInt(inputLine);
-		if (count < 1) {
+		int racingCount = Integer.parseInt(inputLine);
+		if (racingCount < 1) {
 			throw new IllegalArgumentException(ErrorType.WRONG_RACING_COUNT);
 		}
-		return count;
+		return racingCount;
 	}
 }
