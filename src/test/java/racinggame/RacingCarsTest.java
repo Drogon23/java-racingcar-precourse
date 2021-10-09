@@ -65,6 +65,34 @@ public class RacingCarsTest extends NSTest {
 		}
 	}
 
+	@Test
+	void 우승자_한명_선정() {
+		RacingCars racingCars = new RacingCars(new String[] {"pobi", "woni"});
+		try (MockedStatic<Randoms> mockRandom = Mockito.mockStatic(Randoms.class)) {
+			mockRandom.when(() -> Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER))
+				.thenReturn(4, 2, 5, 9);
+
+			racingCars.goRacingCars(2);
+			racingCars.printWinner();
+
+			verify("pobi");
+		}
+	}
+
+	@Test
+	void 우승자_여러명_선정() {
+		RacingCars racingCars = new RacingCars(new String[] {"pobi", "woni", "lani"});
+		try (MockedStatic<Randoms> mockRandom = Mockito.mockStatic(Randoms.class)) {
+			mockRandom.when(() -> Randoms.pickNumberInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER))
+				.thenReturn(4, 2, 6, 5, 9, 8);
+
+			racingCars.goRacingCars(2);
+			racingCars.printWinner();
+
+			verify("최종 우승자는 pobi,lani 입니다.");
+		}
+	}
+
 	@AfterEach
 	void tearDown() {
 		outputStandard();

@@ -11,12 +11,17 @@ public class Application {
 	private static final String RESULT_MESSAGE = "실행 결과";
 
 	public static void main(String[] args) {
+		playRacingGame();
+	}
+
+	private static void playRacingGame() {
 		System.out.println(GAME_START_MESSAGE);
 		RacingCars racingCars = RacingCars.createRacingCars();
 		System.out.println(RACING_COUNT_MESSAGE);
 		int racingCount = getRacingCount();
 		System.out.println(RESULT_MESSAGE);
 		racingCars.goRacingCars(racingCount);
+		racingCars.printWinner();
 	}
 
 	private static int getRacingCount() {

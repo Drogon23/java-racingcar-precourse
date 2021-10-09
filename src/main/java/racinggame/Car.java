@@ -10,6 +10,7 @@ public class Car {
 	private static final int MOVING_FORWARD = 4;
 	private static final String DASH = "-";
 	private static final String COLON = " : ";
+
 	private final String name;
 	private int distance;
 
