@@ -10,6 +10,7 @@ public class RacingCars {
 	private static final int MAX_CAR_NAME_LENGTH = 5;
 	private static final String COMMA = ",";
 	private static final int MIN_INPUT_LENGTH = 1;
+	private static final int ZERO = 0;
 
 	private final List<Car> carList;
 
@@ -62,5 +63,20 @@ public class RacingCars {
 			throw new IllegalArgumentException(ErrorType.WRONG_INPUT);
 		}
 		return inputLine;
+	}
+
+	public void goRacingCars (int racingCount) {
+		int count = ZERO;
+		while (count < racingCount) {
+			tryMoveAllRacingCars();
+			count++;
+		}
+	}
+
+	private void tryMoveAllRacingCars() {
+		for (Car car : this.carList) {
+			car.tryMove();
+		}
+		System.out.println();
 	}
 }
